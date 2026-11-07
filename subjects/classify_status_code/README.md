@@ -4,12 +4,10 @@
 
 Write a function that takes an HTTP status code as an `int` and returns a `string` describing its category.
 
-- `100` to `199` returns `Informational`.
-- `200` to `299` returns `Success`.
-- `300` to `399` returns `Redirection`.
-- `400` to `499` returns `Client Error`.
-- `500` to `599` returns `Server Error`.
-- Any other value returns `Unknown`.
+- `200` to `299` returns `SUCCESS`.
+- `400` to `499` returns `CLIENT_ERROR`.
+- `500` to `599` returns `SERVER_ERROR`.
+- Any other value returns `UNKNOWN`. This includes `1xx`, `3xx` redirects, negative numbers, and `600` or above.
 
 ### Expected function
 
@@ -45,11 +43,10 @@ And its output:
 
 ```console
 $ go run . | cat -e
-Success$
-Redirection$
-Client Error$
-Server Error$
-Unknown$
-Unknown$
-$
+SUCCESS$
+UNKNOWN$
+CLIENT_ERROR$
+SERVER_ERROR$
+UNKNOWN$
+UNKNOWN$
 ```
