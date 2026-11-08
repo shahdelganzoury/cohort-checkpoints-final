@@ -26,16 +26,15 @@ package main
 
 import (
 	"fmt"
-	"piscine"
 )
 
 func main() {
-	fmt.Println(piscine.ClassifyStatusCode(200))
-	fmt.Println(piscine.ClassifyStatusCode(301))
-	fmt.Println(piscine.ClassifyStatusCode(404))
-	fmt.Println(piscine.ClassifyStatusCode(503))
-	fmt.Println(piscine.ClassifyStatusCode(99))
-	fmt.Println(piscine.ClassifyStatusCode(600))
+	fmt.Println(ClassifyStatusCode(200))
+	fmt.Println(ClassifyStatusCode(301))
+	fmt.Println(ClassifyStatusCode(404))
+	fmt.Println(ClassifyStatusCode(503))
+	fmt.Println(ClassifyStatusCode(99))
+	fmt.Println(ClassifyStatusCode(600))
 }
 ```
 
