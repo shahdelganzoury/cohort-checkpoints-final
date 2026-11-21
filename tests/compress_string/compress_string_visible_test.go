@@ -1,9 +1,25 @@
 package main
-import ("reflect";"testing")
-var _ = reflect.DeepEqual
-func TestLevel_CompressString_Visible(t *testing.T){
-t.Run("example_1",func(t *testing.T){got:=CompressString("");want:="";if !reflect.DeepEqual(got,want){t.Fatalf("got %v, want %v",got,want)}})
-t.Run("example_2",func(t *testing.T){got:=CompressString("a");want:="a1";if !reflect.DeepEqual(got,want){t.Fatalf("got %v, want %v",got,want)}})
-t.Run("example_3",func(t *testing.T){got:=CompressString("aaabbcccc");want:="a3b2c4";if !reflect.DeepEqual(got,want){t.Fatalf("got %v, want %v",got,want)}})
-t.Run("example_4",func(t *testing.T){got:=CompressString("aabbaa");want:="a2b2a2";if !reflect.DeepEqual(got,want){t.Fatalf("got %v, want %v",got,want)}})
+
+import "testing"
+
+func TestLevel_CompressString_Visible(t *testing.T) {
+	tests := []struct {
+		name     string
+		s        string
+		expected string
+	}{
+		{"example_1", "", ""},
+		{"example_2", "a", "a1"},
+		{"example_3", "aaabbcccc", "a3b2c4"},
+		{"example_4", "aabbaa", "a2b2a2"},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			got := CompressString(tc.s)
+			if got != tc.expected {
+				t.Fatalf("CompressString(%q) = %q; want %q", tc.s, got, tc.expected)
+			}
+		})
+	}
 }

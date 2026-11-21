@@ -1,9 +1,27 @@
 package main
-import ("reflect";"testing")
-var _ = reflect.DeepEqual
-func TestLevel_DayOfYear_Visible(t *testing.T){
-t.Run("example_1",func(t *testing.T){got:=DayOfYear(1,3,2024);want:=61;if !reflect.DeepEqual(got,want){t.Fatalf("got %v, want %v",got,want)}})
-t.Run("example_2",func(t *testing.T){got:=DayOfYear(1,3,2025);want:=60;if !reflect.DeepEqual(got,want){t.Fatalf("got %v, want %v",got,want)}})
-t.Run("example_3",func(t *testing.T){got:=DayOfYear(29,2,2025);want:=-1;if !reflect.DeepEqual(got,want){t.Fatalf("got %v, want %v",got,want)}})
-t.Run("example_4",func(t *testing.T){got:=DayOfYear(29,2,2024);want:=60;if !reflect.DeepEqual(got,want){t.Fatalf("got %v, want %v",got,want)}})
+
+import "testing"
+
+func TestLevel_DayOfYear_Visible(t *testing.T) {
+	tests := []struct {
+		name     string
+		day      int
+		month    int
+		year     int
+		expected int
+	}{
+		{"example_1", 1, 3, 2024, 61},
+		{"example_2", 1, 3, 2025, 60},
+		{"example_3", 29, 2, 2025, -1},
+		{"example_4", 29, 2, 2024, 60},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+			got := DayOfYear(tc.day, tc.month, tc.year)
+			if got != tc.expected {
+				t.Fatalf("DayOfYear(%d, %d, %d) = %d; want %d", tc.day, tc.month, tc.year, got, tc.expected)
+			}
+		})
+	}
 }
