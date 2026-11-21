@@ -1,26 +1,49 @@
-# Level 8: CashRegister
+## cashregister
 
-**Difficulty:** Medium
+### Instructions
 
-## Instructions
+Write a function that takes a nonnegative amount as an `int` and returns the minimum number of coins needed to make that amount as an `int`.
 
-Return the minimum number of coins needed for a nonnegative amount using unlimited denominations 25, 10, 5, 1.
+- The denominations are `25`, `10`, `5`, and `1`, and each may be used any number of times.
+- The amount is greater than or equal to `0`.
 
-## Expected function
+### Expected function
 
 ```go
 func CashRegister(amount int) int {
-    // Implement your solution.
+
 }
 ```
 
-## Example
+### Usage
 
-```text
-CashRegister(68) -> 7
+Here is a possible program to test your function:
+
+```go
+package main
+
+import (
+	"fmt"
+	"piscine"
+)
+
+func main() {
+	fmt.Println(piscine.CashRegister(68))
+	fmt.Println(piscine.CashRegister(0))
+	fmt.Println(piscine.CashRegister(1))
+	fmt.Println(piscine.CashRegister(5))
+	fmt.Println(piscine.CashRegister(10))
+}
 ```
 
-## Rules
+And its output:
 
-Use Go standard library only. The evaluator calls the function directly.
-Do not print the result instead of returning it. Keep the function name and signature unchanged.
+```console
+$ go run . | cat -e
+7$
+0$
+1$
+1$
+1$
+$
+```

@@ -1,26 +1,51 @@
-# Level 3: PasswordStrength
+## passwordstrength
 
-**Difficulty:** Medium
+### Instructions
 
-## Instructions
+Write a function that takes a password as a `string` and returns its strength as an `int` from `0` to `4`.
 
-Score one point each for length >= 8, presence of uppercase ASCII A-Z, digit 0-9, and a special character from !@#$%. Return 0..4.
+Score one point for each of the following:
 
-## Expected function
+- The length is greater than or equal to `8`.
+- The password contains an uppercase ASCII letter from `A` to `Z`.
+- The password contains a digit from `0` to `9`.
+- The password contains a special character from `!@#$%`.
+
+### Expected function
 
 ```go
 func PasswordStrength(s string) int {
-    // Implement your solution.
+
 }
 ```
 
-## Example
+### Usage
 
-```text
-PasswordStrength("Go2026!") -> 3
+Here is a possible program to test your function:
+
+```go
+package main
+
+import (
+	"fmt"
+	"piscine"
+)
+
+func main() {
+	fmt.Println(piscine.PasswordStrength("Go2026!"))
+	fmt.Println(piscine.PasswordStrength(""))
+	fmt.Println(piscine.PasswordStrength("abc"))
+	fmt.Println(piscine.PasswordStrength("GoLang2026!"))
+}
 ```
 
-## Rules
+And its output:
 
-Use Go standard library only. The evaluator calls the function directly.
-Do not print the result instead of returning it. Keep the function name and signature unchanged.
+```console
+$ go run . | cat -e
+3$
+0$
+0$
+4$
+$
+```

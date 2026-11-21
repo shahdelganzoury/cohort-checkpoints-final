@@ -1,26 +1,47 @@
-# Level 2: DayOfYear
+## dayofyear
 
-**Difficulty:** Medium
+### Instructions
 
-## Instructions
+Write a function that takes a `day`, a `month`, and a `year` as `int` values and returns the one-based day of that Gregorian year as an `int`.
 
-Return the one-based ordinal day in the Gregorian year. Invalid date returns -1; year >= 1.
+- `year` is greater than or equal to `1`.
+- If the date is invalid, the function returns `-1`.
 
-## Expected function
+### Expected function
 
 ```go
 func DayOfYear(day, month, year int) int {
-    // Implement your solution.
+
 }
 ```
 
-## Example
+### Usage
 
-```text
-DayOfYear(1,3,2024) -> 61
+Here is a possible program to test your function:
+
+```go
+package main
+
+import (
+	"fmt"
+	"piscine"
+)
+
+func main() {
+	fmt.Println(piscine.DayOfYear(1, 3, 2024))
+	fmt.Println(piscine.DayOfYear(1, 3, 2025))
+	fmt.Println(piscine.DayOfYear(29, 2, 2025))
+	fmt.Println(piscine.DayOfYear(29, 2, 2024))
+}
 ```
 
-## Rules
+And its output:
 
-Use Go standard library only. The evaluator calls the function directly.
-Do not print the result instead of returning it. Keep the function name and signature unchanged.
+```console
+$ go run . | cat -e
+61$
+60$
+-1$
+60$
+$
+```

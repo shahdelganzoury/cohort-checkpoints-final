@@ -1,26 +1,47 @@
-# Level 5: CompressString
+## compressstring
 
-**Difficulty:** Medium
+### Instructions
 
-## Instructions
+Write a function that takes a `string` and returns the same text with each run of consecutive lowercase ASCII letters encoded.
 
-Encode consecutive lowercase ASCII letter runs as letter followed by decimal count, including 1. Empty input returns empty string.
+- Write each run as the letter followed by its decimal count, including a count of `1`.
+- If the input is empty, the function returns an empty string.
 
-## Expected function
+### Expected function
 
 ```go
 func CompressString(s string) string {
-    // Implement your solution.
+
 }
 ```
 
-## Example
+### Usage
 
-```text
-CompressString("aaabbcccc") -> "a3b2c4"
+Here is a possible program to test your function:
+
+```go
+package main
+
+import (
+	"fmt"
+	"piscine"
+)
+
+func main() {
+	fmt.Println(piscine.CompressString("aaabbcccc"))
+	fmt.Println(piscine.CompressString(""))
+	fmt.Println(piscine.CompressString("a"))
+	fmt.Println(piscine.CompressString("aabbaa"))
+}
 ```
 
-## Rules
+And its output:
 
-Use Go standard library only. The evaluator calls the function directly.
-Do not print the result instead of returning it. Keep the function name and signature unchanged.
+```console
+$ go run . | cat -e
+a3b2c4$
+$
+a1$
+a2b2a2$
+$
+```

@@ -1,26 +1,48 @@
-# Level 9: MeetingConflict
+## meetingconflict
 
-**Difficulty:** Medium
+### Instructions
 
-## Instructions
+Write a function that takes the meetings as a slice of `[2]int` and returns `true` when any two meetings overlap.
 
-Meetings are valid, unsorted half-open intervals [start,end), 0 <= start < end <= 1440. Return true if any two overlap; touching endpoints are not conflicts.
+- Each meeting is a valid half-open interval `[start, end)`, with `0 <= start < end <= 1440`.
+- The meetings are not necessarily sorted.
+- Intervals that only touch at an endpoint are not a conflict.
 
-## Expected function
+### Expected function
 
 ```go
 func MeetingConflict(meetings [][2]int) bool {
-    // Implement your solution.
+
 }
 ```
 
-## Example
+### Usage
 
-```text
-MeetingConflict([][2]int{{540,600},{570,630}}) -> true
+Here is a possible program to test your function:
+
+```go
+package main
+
+import (
+	"fmt"
+	"piscine"
+)
+
+func main() {
+	fmt.Println(piscine.MeetingConflict([][2]int{{540, 600}, {570, 630}}))
+	fmt.Println(piscine.MeetingConflict(nil))
+	fmt.Println(piscine.MeetingConflict([][2]int{{540, 600}, {600, 660}}))
+	fmt.Println(piscine.MeetingConflict([][2]int{{0, 1440}, {1, 2}}))
+}
 ```
 
-## Rules
+And its output:
 
-Use Go standard library only. The evaluator calls the function directly.
-Do not print the result instead of returning it. Keep the function name and signature unchanged.
+```console
+$ go run . | cat -e
+true$
+false$
+false$
+true$
+$
+```

@@ -1,26 +1,46 @@
-# Level 7: DigitPositionMatch
+## digitpositionmatch
 
-**Difficulty:** Medium
+### Instructions
 
-## Instructions
+Write a function that takes two equal-length strings of decimal digits and returns, as an `int`, how many indexes hold the same character.
 
-Given equal-length strings of decimal digits, count indices with identical characters. Leading zeroes are meaningful.
+- Leading zeroes are meaningful.
 
-## Expected function
+### Expected function
 
 ```go
-func DigitPositionMatch(a,b string) int {
-    // Implement your solution.
+func DigitPositionMatch(a, b string) int {
+
 }
 ```
 
-## Example
+### Usage
 
-```text
-DigitPositionMatch("58342","57382") -> 3
+Here is a possible program to test your function:
+
+```go
+package main
+
+import (
+	"fmt"
+	"piscine"
+)
+
+func main() {
+	fmt.Println(piscine.DigitPositionMatch("58342", "57382"))
+	fmt.Println(piscine.DigitPositionMatch("", ""))
+	fmt.Println(piscine.DigitPositionMatch("000", "000"))
+	fmt.Println(piscine.DigitPositionMatch("123", "456"))
+}
 ```
 
-## Rules
+And its output:
 
-Use Go standard library only. The evaluator calls the function directly.
-Do not print the result instead of returning it. Keep the function name and signature unchanged.
+```console
+$ go run . | cat -e
+3$
+0$
+3$
+0$
+$
+```

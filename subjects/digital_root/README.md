@@ -1,26 +1,49 @@
-# Level 1: DigitalRoot
+## digitalroot
 
-**Difficulty:** Easy+
+### Instructions
 
-## Instructions
+Write a function that takes a nonnegative `int` and returns its digital root as an `int`.
 
-Return the repeated sum of decimal digits until one digit remains. n >= 0.
+- Add the decimal digits repeatedly until one digit remains.
+- `n` is greater than or equal to `0`.
 
-## Expected function
+### Expected function
 
 ```go
 func DigitalRoot(n int) int {
-    // Implement your solution.
+
 }
 ```
 
-## Example
+### Usage
 
-```text
-DigitalRoot(9875) -> 2
+Here is a possible program to test your function:
+
+```go
+package main
+
+import (
+	"fmt"
+	"piscine"
+)
+
+func main() {
+	fmt.Println(piscine.DigitalRoot(9875))
+	fmt.Println(piscine.DigitalRoot(0))
+	fmt.Println(piscine.DigitalRoot(9))
+	fmt.Println(piscine.DigitalRoot(10))
+	fmt.Println(piscine.DigitalRoot(99))
+}
 ```
 
-## Rules
+And its output:
 
-Use Go standard library only. The evaluator calls the function directly.
-Do not print the result instead of returning it. Keep the function name and signature unchanged.
+```console
+$ go run . | cat -e
+2$
+0$
+9$
+1$
+9$
+$
+```

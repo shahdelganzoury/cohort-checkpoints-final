@@ -1,26 +1,47 @@
-# Level 10: FirstCompleteRow
+## firstcompleterow
 
-**Difficulty:** Medium
+### Instructions
 
-## Instructions
+Write a function that takes a nonempty rectangular grid of distinct `int` values and a sequence of distinct called `int` values, and returns the 1-based index of the call that first completes a row.
 
-Given a nonempty rectangular grid of distinct integers and a sequence of distinct called integers, return the 1-based call index when the first row becomes fully called, or -1. Called values may be absent from the grid.
+- If no row is fully called, the function returns `-1`.
+- A called value may be absent from the grid.
 
-## Expected function
+### Expected function
 
 ```go
 func FirstCompleteRow(grid [][]int, called []int) int {
-    // Implement your solution.
+
 }
 ```
 
-## Example
+### Usage
 
-```text
-FirstCompleteRow([][]int{{4,1,7},{3,9,2},{8,5,6}}, []int{9,4,1,3,7,2}) -> 5
+Here is a possible program to test your function:
+
+```go
+package main
+
+import (
+	"fmt"
+	"piscine"
+)
+
+func main() {
+	fmt.Println(piscine.FirstCompleteRow([][]int{{4, 1, 7}, {3, 9, 2}, {8, 5, 6}}, []int{9, 4, 1, 3, 7, 2}))
+	fmt.Println(piscine.FirstCompleteRow([][]int{{1}}, []int{1}))
+	fmt.Println(piscine.FirstCompleteRow([][]int{{1}}, []int{2}))
+	fmt.Println(piscine.FirstCompleteRow([][]int{{1, 2}, {3, 4}}, []int{1, 3, 2}))
+}
 ```
 
-## Rules
+And its output:
 
-Use Go standard library only. The evaluator calls the function directly.
-Do not print the result instead of returning it. Keep the function name and signature unchanged.
+```console
+$ go run . | cat -e
+5$
+1$
+-1$
+3$
+$
+```

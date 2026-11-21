@@ -1,26 +1,47 @@
-# Level 6: TwoMissingNumbers
+## twomissingnumbers
 
-**Difficulty:** Medium+
+### Instructions
 
-## Instructions
+Write a function that takes a slice of distinct `int` values and returns the two missing numbers in ascending order.
 
-Input contains distinct integers from 1 through len(nums)+2 with exactly two missing. Return both missing numbers in ascending order. Inputs avoid integer overflow.
+- The input contains distinct integers from `1` through `len(nums)+2`, with exactly two numbers missing.
+- The inputs avoid integer overflow.
 
-## Expected function
+### Expected function
 
 ```go
-func TwoMissingNumbers(nums []int) (int,int) {
-    // Implement your solution.
+func TwoMissingNumbers(nums []int) (int, int) {
+
 }
 ```
 
-## Example
+### Usage
 
-```text
-TwoMissingNumbers([]int{1,3,6,2}) -> (4,5)
+Here is a possible program to test your function:
+
+```go
+package main
+
+import (
+	"fmt"
+	"piscine"
+)
+
+func main() {
+	fmt.Println(piscine.TwoMissingNumbers([]int{1, 3, 6, 2}))
+	fmt.Println(piscine.TwoMissingNumbers(nil))
+	fmt.Println(piscine.TwoMissingNumbers([]int{2, 4, 5, 6}))
+	fmt.Println(piscine.TwoMissingNumbers([]int{2, 3}))
+}
 ```
 
-## Rules
+And its output:
 
-Use Go standard library only. The evaluator calls the function directly.
-Do not print the result instead of returning it. Keep the function name and signature unchanged.
+```console
+$ go run . | cat -e
+4 5$
+1 2$
+1 3$
+1 4$
+$
+```

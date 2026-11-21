@@ -1,26 +1,48 @@
-# Level 4: BusCapacity
+## buscapacity
 
-**Difficulty:** Medium
+### Instructions
 
-## Instructions
+Write a function that takes a bus `capacity` as an `int` and the stops as a slice of `[2]int`, and returns the maximum occupancy as an `int`.
 
-Each stop is {boarding, leaving}. Passengers leave before boarding. Starting empty, return maximum occupancy, or -1 for invalid negative counts, impossible leaving, or capacity exceeded. Capacity >= 0.
+- Each stop is a pair `{boarding, leaving}`. Passengers leave before boarding, and the bus starts empty.
+- `capacity` is greater than or equal to `0`.
+- The function returns `-1` when a count is negative, more passengers leave than are on the bus, or boarding would exceed `capacity`.
 
-## Expected function
+### Expected function
 
 ```go
 func BusCapacity(capacity int, stops [][2]int) int {
-    // Implement your solution.
+
 }
 ```
 
-## Example
+### Usage
 
-```text
-BusCapacity(20, [][2]int{{10,0},{8,3},{2,5},{4,1}}) -> 15
+Here is a possible program to test your function:
+
+```go
+package main
+
+import (
+	"fmt"
+	"piscine"
+)
+
+func main() {
+	fmt.Println(piscine.BusCapacity(20, [][2]int{{10, 0}, {8, 3}, {2, 5}, {4, 1}}))
+	fmt.Println(piscine.BusCapacity(10, [][2]int{{10, 0}}))
+	fmt.Println(piscine.BusCapacity(10, [][2]int{{11, 0}}))
+	fmt.Println(piscine.BusCapacity(10, [][2]int{{0, 1}}))
+}
 ```
 
-## Rules
+And its output:
 
-Use Go standard library only. The evaluator calls the function directly.
-Do not print the result instead of returning it. Keep the function name and signature unchanged.
+```console
+$ go run . | cat -e
+15$
+10$
+-1$
+-1$
+$
+```
