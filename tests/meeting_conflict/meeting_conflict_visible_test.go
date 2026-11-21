@@ -18,7 +18,7 @@ func TestLevel_MeetingConflict_Visible(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 			got := MeetingConflict(tc.meetings)
 			if got != tc.expected {
-				t.Fatalf("MeetingConflict(%v) = %v; want %v", tc.meetings, got, tc.expected)
+				t.Fatalf("%s failed\ncall: MeetingConflict(%#v)\ngot: %#v\nrequired: %#v", tc.name, tc.meetings, got, tc.expected)
 			}
 		})
 	}

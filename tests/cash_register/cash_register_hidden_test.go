@@ -4,13 +4,14 @@
 package main
 
 import (
+	"fmt"
 	"math/rand"
 	"reflect"
 	"testing"
 	"time"
 )
 
-func hiddenCallWithTimeout[T any](t *testing.T, fn func() T) T {
+func hiddenCallWithTimeout[T any](t *testing.T, label string, fn func() T) T {
 	t.Helper()
 	ch := make(chan T, 1)
 	panicCh := make(chan any, 1)
@@ -26,11 +27,11 @@ func hiddenCallWithTimeout[T any](t *testing.T, fn func() T) T {
 	case got := <-ch:
 		return got
 	case p := <-panicCh:
-		t.Fatalf("student function panicked: %v", p)
+		t.Fatalf("%s\nstudent function panicked: %v", label, p)
 		var zero T
 		return zero
 	case <-time.After(800 * time.Millisecond):
-		t.Fatal("student function timed out")
+		t.Fatalf("%s\nstudent function timed out", label)
 		var zero T
 		return zero
 	}
@@ -66,10 +67,11 @@ func TestHidden_CashRegister_CornerCases(t *testing.T) {
 
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
+			call := fmt.Sprintf("%s: CashRegister(%#v)", tc.name, tc.amount)
 			want := hiddenRef(tc.amount)
-			got := hiddenCallWithTimeout(t, func() int { return CashRegister(tc.amount) })
+			got := hiddenCallWithTimeout(t, call, func() int { return CashRegister(tc.amount) })
 			if !reflect.DeepEqual(got, want) {
-				t.Fatalf("corner case mismatch: got %v want %v", got, want)
+				t.Fatalf("%s\ngot: %#v\nrequired: %#v", call, got, want)
 			}
 		})
 	}
@@ -81,10 +83,11 @@ func TestHidden_CashRegister_SeededProperty(t *testing.T) {
 
 	for trial := 0; trial < 500; trial++ {
 		amount := rng.Intn(10000)
+		call := fmt.Sprintf("trial %d: CashRegister(%#v)", trial, amount)
 		want := hiddenRef(amount)
-		got := hiddenCallWithTimeout(t, func() int { return CashRegister(amount) })
+		got := hiddenCallWithTimeout(t, call, func() int { return CashRegister(amount) })
 		if !reflect.DeepEqual(got, want) {
-			t.Fatalf("trial %d: got %v want %v", trial, got, want)
+			t.Fatalf("%s\ngot: %#v\nrequired: %#v", call, got, want)
 		}
 	}
 }

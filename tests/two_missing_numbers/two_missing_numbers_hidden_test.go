@@ -4,13 +4,14 @@
 package main
 
 import (
+	"fmt"
 	"math/rand"
 	"reflect"
 	"testing"
 	"time"
 )
 
-func hiddenCallWithTimeout[T any](t *testing.T, fn func() T) T {
+func hiddenCallWithTimeout[T any](t *testing.T, label string, fn func() T) T {
 	t.Helper()
 	ch := make(chan T, 1)
 	panicCh := make(chan any, 1)
@@ -26,11 +27,11 @@ func hiddenCallWithTimeout[T any](t *testing.T, fn func() T) T {
 	case got := <-ch:
 		return got
 	case p := <-panicCh:
-		t.Fatalf("student function panicked: %v", p)
+		t.Fatalf("%s\nstudent function panicked: %v", label, p)
 		var zero T
 		return zero
 	case <-time.After(800 * time.Millisecond):
-		t.Fatal("student function timed out")
+		t.Fatalf("%s\nstudent function timed out", label)
 		var zero T
 		return zero
 	}
@@ -90,13 +91,14 @@ func TestHidden_TwoMissingNumbers_CornerCases(t *testing.T) {
 
 	for _, tc := range tests {
 		t.Run(tc.name, func(t *testing.T) {
+			call := fmt.Sprintf("%s: TwoMissingNumbers(%#v)", tc.name, tc.nums)
 			want := hiddenRef(tc.nums)
-			got := hiddenCallWithTimeout(t, func() [2]int {
+			got := hiddenCallWithTimeout(t, call, func() [2]int {
 				a, b := TwoMissingNumbers(tc.nums)
 				return [2]int{a, b}
 			})
 			if got != want {
-				t.Fatalf("corner case mismatch: got %v want %v", got, want)
+				t.Fatalf("%s\ngot: %#v\nrequired: %#v", call, got, want)
 			}
 		})
 	}
@@ -108,13 +110,14 @@ func TestHidden_TwoMissingNumbers_SeededProperty(t *testing.T) {
 
 	for trial := 0; trial < 500; trial++ {
 		nums := hiddenRandomMissing(rng)
+		call := fmt.Sprintf("trial %d: TwoMissingNumbers(%#v)", trial, nums)
 		want := hiddenRef(nums)
-		got := hiddenCallWithTimeout(t, func() [2]int {
+		got := hiddenCallWithTimeout(t, call, func() [2]int {
 			a, b := TwoMissingNumbers(nums)
 			return [2]int{a, b}
 		})
 		if !reflect.DeepEqual(got, want) {
-			t.Fatalf("trial %d: got %v want %v", trial, got, want)
+			t.Fatalf("%s\ngot: %#v\nrequired: %#v", call, got, want)
 		}
 	}
 }

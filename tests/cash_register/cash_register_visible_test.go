@@ -18,7 +18,7 @@ func TestLevel_CashRegister_Visible(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 			got := CashRegister(tc.amount)
 			if got != tc.expected {
-				t.Fatalf("CashRegister(%d) = %d; want %d", tc.amount, got, tc.expected)
+				t.Fatalf("%s failed\ncall: CashRegister(%#v)\ngot: %#v\nrequired: %#v", tc.name, tc.amount, got, tc.expected)
 			}
 		})
 	}

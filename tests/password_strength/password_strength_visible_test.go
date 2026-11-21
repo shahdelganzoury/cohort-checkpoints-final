@@ -18,7 +18,7 @@ func TestLevel_PasswordStrength_Visible(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 			got := PasswordStrength(tc.s)
 			if got != tc.expected {
-				t.Fatalf("PasswordStrength(%q) = %d; want %d", tc.s, got, tc.expected)
+				t.Fatalf("%s failed\ncall: PasswordStrength(%#v)\ngot: %#v\nrequired: %#v", tc.name, tc.s, got, tc.expected)
 			}
 		})
 	}

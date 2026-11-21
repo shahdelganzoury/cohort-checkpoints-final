@@ -18,7 +18,7 @@ func TestLevel_CompressString_Visible(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 			got := CompressString(tc.s)
 			if got != tc.expected {
-				t.Fatalf("CompressString(%q) = %q; want %q", tc.s, got, tc.expected)
+				t.Fatalf("%s failed\ncall: CompressString(%#v)\ngot: %#v\nrequired: %#v", tc.name, tc.s, got, tc.expected)
 			}
 		})
 	}

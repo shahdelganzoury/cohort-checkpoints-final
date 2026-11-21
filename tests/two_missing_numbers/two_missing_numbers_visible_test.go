@@ -19,7 +19,7 @@ func TestLevel_TwoMissingNumbers_Visible(t *testing.T) {
 			a, b := TwoMissingNumbers(tc.nums)
 			got := [2]int{a, b}
 			if got != tc.expected {
-				t.Fatalf("TwoMissingNumbers(%v) = %v; want %v", tc.nums, got, tc.expected)
+				t.Fatalf("%s failed\ncall: TwoMissingNumbers(%#v)\ngot: %#v\nrequired: %#v", tc.name, tc.nums, got, tc.expected)
 			}
 		})
 	}

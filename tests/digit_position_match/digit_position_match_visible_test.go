@@ -19,7 +19,7 @@ func TestLevel_DigitPositionMatch_Visible(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 			got := DigitPositionMatch(tc.a, tc.b)
 			if got != tc.expected {
-				t.Fatalf("DigitPositionMatch(%q, %q) = %d; want %d", tc.a, tc.b, got, tc.expected)
+				t.Fatalf("%s failed\ncall: DigitPositionMatch(%#v, %#v)\ngot: %#v\nrequired: %#v", tc.name, tc.a, tc.b, got, tc.expected)
 			}
 		})
 	}

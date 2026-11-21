@@ -19,7 +19,7 @@ func TestLevel_FirstCompleteRow_Visible(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 			got := FirstCompleteRow(tc.grid, tc.called)
 			if got != tc.expected {
-				t.Fatalf("FirstCompleteRow(%v, %v) = %d; want %d", tc.grid, tc.called, got, tc.expected)
+				t.Fatalf("%s failed\ncall: FirstCompleteRow(%#v, %#v)\ngot: %#v\nrequired: %#v", tc.name, tc.grid, tc.called, got, tc.expected)
 			}
 		})
 	}

@@ -20,7 +20,7 @@ func TestLevel_DayOfYear_Visible(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 			got := DayOfYear(tc.day, tc.month, tc.year)
 			if got != tc.expected {
-				t.Fatalf("DayOfYear(%d, %d, %d) = %d; want %d", tc.day, tc.month, tc.year, got, tc.expected)
+				t.Fatalf("%s failed\ncall: DayOfYear(%#v, %#v, %#v)\ngot: %#v\nrequired: %#v", tc.name, tc.day, tc.month, tc.year, got, tc.expected)
 			}
 		})
 	}

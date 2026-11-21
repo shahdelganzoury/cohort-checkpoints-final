@@ -18,7 +18,7 @@ func TestLevel_DigitalRoot_Visible(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 			got := DigitalRoot(tc.n)
 			if got != tc.expected {
-				t.Fatalf("DigitalRoot(%d) = %d; want %d", tc.n, got, tc.expected)
+				t.Fatalf("%s failed\ncall: DigitalRoot(%#v)\ngot: %#v\nrequired: %#v", tc.name, tc.n, got, tc.expected)
 			}
 		})
 	}
