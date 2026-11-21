@@ -6,6 +6,9 @@ Write a function that takes a nonnegative amount as an `int` and returns the min
 
 - The denominations are `25`, `10`, `5`, and `1`, and each may be used any number of times.
 - The amount is greater than or equal to `0`.
+- An amount of `0` returns `0`.
+- An amount equal to one denomination returns `1`.
+- Use as many `25` coins as possible, then `10`, then `5`, then `1`.
 
 ### Expected function
 

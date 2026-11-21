@@ -6,6 +6,10 @@ Write a function that takes a `day`, a `month`, and a `year` as `int` values and
 
 - `year` is greater than or equal to `1`.
 - If the date is invalid, the function returns `-1`.
+- A year is a leap year when it is divisible by `400`, or divisible by `4` but not by `100`. February then has `29` days. Otherwise February has `28` days.
+- The month lengths are `31`, `28` or `29`, `31`, `30`, `31`, `30`, `31`, `31`, `30`, `31`, `30`, and `31`.
+- The date is invalid when `year` is less than `1`, `month` is outside `1` to `12`, `day` is less than `1`, or `day` is past the last day of that month.
+- January `1` is day `1`. The result counts every day from the start of the year through the given day.
 
 ### Expected function
 

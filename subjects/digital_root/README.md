@@ -6,6 +6,8 @@ Write a function that takes a nonnegative `int` and returns its digital root as 
 
 - Add the decimal digits repeatedly until one digit remains.
 - `n` is greater than or equal to `0`.
+- If `n` is already a single digit, including `0`, the function returns `n` unchanged.
+- A sum of `10` or more is summed again, until the total is from `0` through `9`.
 
 ### Expected function
 

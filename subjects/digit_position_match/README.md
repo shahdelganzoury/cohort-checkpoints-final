@@ -5,6 +5,9 @@
 Write a function that takes two equal-length strings of decimal digits and returns, as an `int`, how many indexes hold the same character.
 
 - Leading zeroes are meaningful.
+- Compare the characters at each index. Do not convert the strings to numbers.
+- Two empty strings return `0`.
+- Every matching index counts, including zeroes.
 
 ### Expected function
 

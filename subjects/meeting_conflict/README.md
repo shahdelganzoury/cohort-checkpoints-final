@@ -7,6 +7,10 @@ Write a function that takes the meetings as a slice of `[2]int` and returns `tru
 - Each meeting is a valid half-open interval `[start, end)`, with `0 <= start < end <= 1440`.
 - The meetings are not necessarily sorted.
 - Intervals that only touch at an endpoint are not a conflict.
+- Two intervals `[start1, end1)` and `[start2, end2)` overlap when `start1 < end2` and `start2 < end1`.
+- An empty slice, a `nil` slice, or a single meeting returns `false`.
+- A meeting contained inside another meeting is a conflict.
+- Compare every pair of different meetings. A meeting does not conflict with itself.
 
 ### Expected function
 

@@ -10,6 +10,11 @@ Score one point for each of the following:
 - The password contains an uppercase ASCII letter from `A` to `Z`.
 - The password contains a digit from `0` to `9`.
 - The password contains a special character from `!@#$%`.
+- Each condition adds at most one point, even when several characters satisfy it.
+- An empty password returns `0`.
+- A length of exactly `8` earns the length point. A shorter password does not.
+- Only `!`, `@`, `#`, `$`, and `%` count as special characters. Other punctuation does not.
+- Lowercase letters do not earn the uppercase point.
 
 ### Expected function
 

@@ -6,6 +6,11 @@ Write a function that takes a nonempty rectangular grid of distinct `int` values
 
 - If no row is fully called, the function returns `-1`.
 - A called value may be absent from the grid.
+- The index of the first call is `1`.
+- After each call, check every row. Return the index of the call that completes one. If several rows finish on that same call, return that index.
+- A row is complete only when every value in it has been called.
+- If `called` is empty or `nil`, the function returns `-1`.
+- A call that is not in the grid fills no cell, but it still counts toward the index.
 
 ### Expected function
 

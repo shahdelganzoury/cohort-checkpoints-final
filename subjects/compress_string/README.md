@@ -6,6 +6,8 @@ Write a function that takes a `string` and returns the same text with each run o
 
 - Write each run as the letter followed by its decimal count, including a count of `1`.
 - If the input is empty, the function returns an empty string.
+- Only consecutive repeats share a count. The same letter later in the string starts a new run.
+- A count of `10` or more is written with all of its decimal digits.
 
 ### Expected function
 
